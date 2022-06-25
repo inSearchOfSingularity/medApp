@@ -1,0 +1,136 @@
+
+:root{
+  --timerBarWidth:1%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  //border:solid black 2px; // add a border to see alignment and positioning 
+  //make sure the goddamn watch sass is on!!!!!!!
+}
+$mainMargin: 15px;
+@mixin sizing($ht, $wd, $pd, $mg) {
+  height: $ht;
+  width: $wd;
+  padding: $pd;
+
+  margin: $mg;
+}
+@mixin flex($direc, $align, $justify, $gap) {
+  //make sure the order is the same for the parameters , errors would be hard to debug
+  display: flex;
+  flex-direction: $direc;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+#backVideo{
+   top:0; ; z-index: 1;  position: fixed; background-color: rgb(18, 53, 53);
+  width: 100vw; left: 0;
+}
+
+.mainInterface { // this holds all UI 
+  position: relative;  z-index: 10;
+  top: 12vh;
+  @include flex(row, space-evenly,center, 0);
+  @include sizing(
+    clamp(100px, 70vh, 800px),
+    clamp(300px, 70vw, 1000px),
+    10px,
+    0
+  );
+  background-color: rgb(87, 30, 30);
+  margin: auto;
+  
+  // simply use margin auto to center horizontally , if its in a flex box use those things
+}
+.timeDisplay{ // the timer and time bar parent
+  @include flex(column,center,space-around,none); width: 80%; align-self: center;
+}
+.modifications{ //mute and change background parent
+  @include flex(column,center,space-around,50%);align-self: center; height: 70vh;
+   transform: translateX(-60%);
+}
+.timeSelector {//select time background parent
+  @include flex(column, center, space-evenly, none);
+  @include sizing(40vh, 10vw, 5px, none);align-self: center;
+}
+.timer{
+  @include sizing(40px,70px,0,30px);
+   background-color: rgb(196, 147, 33); transform: translateX(-30%) translateY(-80%);
+   border-radius: 30%;
+}
+.timerIndicator{ // time bar
+  @include sizing(5%,75%,0,auto);  background-color: rgb(11, 7, 4);  transition: 500ms;
+  position: relative;
+  
+  &::after{ // if pseudo does not show up use pos absolute and content "" always  
+    content: "";
+     
+    
+     @include sizing(3px,var(--timerBarWidth),0,0);   position: absolute;  background-color: #fff;
+  }
+  
+}
+.t .timerIndicator{
+  @extend .timerIndicator;
+  background-color: rgb(18, 133, 26);
+}
+
+.time5 {
+  height: 7vh;
+  width: 3vw;
+  background-color: aqua;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+  transform: scale(1.5); // just use scale like this
+}
+.time10 {
+  @extend .time5;
+}
+.time20 {
+  @extend .time5;
+}
+.muteAudio {
+  @extend .time5;
+  height: 2vw;
+  width: 2vw;
+}
+.arrowClickArea{
+  @extend .muteAudio; 
+  background-color: rgb(24, 123, 145);
+}
+.changeArrow {
+  display: none;
+  top: 25px;
+  width: 63px;
+  height: 10px;
+  background-color: rgb(143, 179, 219);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2); border-radius:40%;
+  animation: arrow 700ms linear infinite; transform: scale(0.4);
+}
+
+.changeArrow::after, .changeArrow::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  right: -8px; border-radius: 30%;
+  background-color: rgb(139, 149, 214);
+}
+
+.changeArrow::after {
+  top: -12px;
+  transform: rotate(45deg);   
+}
+
+.changeArrow::before {
+  top: 12px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, .6);
+  transform: rotate(-45deg);
+}
