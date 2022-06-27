@@ -1,3 +1,4 @@
 # medApp
 ---
-**before graphical changes are made**
+*only the functional elements do cosmatics , and demo video/audio is used*
+
