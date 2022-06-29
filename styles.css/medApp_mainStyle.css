@@ -9,15 +9,17 @@
   outline: 0;
   vertical-align: baseline;
   background: transparent;
+  font-family: "Roboto Slab";
 }
 
 #backVideo {
   top: 0;
   z-index: 1;
   position: fixed;
-  background-color: rgb(18, 53, 53);
+  background-color: rgb(12, 12, 13);
   width: 100vw;
   left: 0;
+  filter: brightness(90%);
 }
 
 .mainInterface {
@@ -33,7 +35,10 @@
   width: clamp(300px, 70vw, 1000px);
   padding: 10px;
   margin: 0;
-  background-color: rgb(87, 30, 30);
+  background-color: rgba(1, 2, 12, 0.179);
+  box-shadow: 1px 3px 10px rgba(1, 2, 12, 0.4) inset;
+  box-shadow: 1px 3px 15px rgba(1, 2, 12, 0.7);
+  border-radius: 20px;
   margin: auto;
 }
 
@@ -64,7 +69,7 @@
   align-items: center;
   justify-content: space-evenly;
   gap: none;
-  height: 40vh;
+  height: 50vh;
   width: 10vw;
   padding: 5px;
   margin: none;
@@ -73,31 +78,35 @@
 
 .timer {
   height: 40px;
-  width: 70px;
+  width: 120px;
   padding: 0;
   margin: 30px;
-  background-color: rgb(196, 147, 33);
-  transform: translateX(-30%) translateY(-80%);
+  font-size: 3rem;
+  color: honeydew;
+  transform: translateX(-23%) translateY(-80%);
   border-radius: 30%;
 }
 
 .timerIndicator, .t .timerIndicator {
-  height: 5%;
+  height: 10%;
   width: 75%;
   padding: 0;
   margin: auto;
   background-color: rgb(11, 7, 4);
   transition: 500ms;
   position: relative;
+  box-shadow: 3px 3px 10px rgba(1, 2, 12, 0.8) inset;
 }
 .timerIndicator::after, .t .timerIndicator::after {
   content: "";
-  height: 3px;
+  height: 7px;
   width: var(--timerBarWidth);
   padding: 0;
   margin: 0;
   position: absolute;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.727);
+  border-radius: 3px;
+  box-shadow: 3px 3px 10px rgba(1, 2, 12, 0.2);
 }
 
 .t .timerIndicator {
@@ -105,9 +114,11 @@
 }
 
 .time5, .muteAudio, .arrowClickArea, .time20, .time10 {
-  height: 7vh;
+  height: 6vh;
   width: 3vw;
-  background-color: aqua;
+  color: honeydew;
+  background-color: rgba(1, 6, 17, 0.422);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   margin: 10px;
   cursor: pointer;
@@ -115,44 +126,18 @@
 }
 
 .muteAudio, .arrowClickArea {
-  height: 2vw;
+  height: 4vh;
   width: 2vw;
 }
 
-.arrowClickArea {
-  background-color: rgb(24, 123, 145);
+#tt, #arrowChangeBack {
+  font-size: 1rem;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  transform: translateX(5.3px) translateY(3px);
 }
 
-.changeArrow {
-  display: none;
-  top: 25px;
-  width: 63px;
-  height: 10px;
-  background-color: rgb(143, 179, 219);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 40%;
-  -webkit-animation: arrow 700ms linear infinite;
-          animation: arrow 700ms linear infinite;
-  transform: scale(0.4);
-}
-
-.changeArrow::after, .changeArrow::before {
-  content: "";
-  position: absolute;
-  width: 60%;
-  height: 10px;
-  right: -8px;
-  border-radius: 30%;
-  background-color: rgb(139, 149, 214);
-}
-
-.changeArrow::after {
-  top: -12px;
-  transform: rotate(45deg);
-}
-
-.changeArrow::before {
-  top: 12px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.6);
-  transform: rotate(-45deg);
+#tt {
+  transform: translateX(0px) translateY(2.5px);
 }/*# sourceMappingURL=medApp_mainStyle.css.map */

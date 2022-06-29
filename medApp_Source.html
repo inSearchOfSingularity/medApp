@@ -8,6 +8,16 @@
     <!--if this is absent no favicon error on console-->
     <link rel="stylesheet" href="styles.css/medApp_mainStyle.css" />
     <!--put the auto gen css here not the scss! -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Smooch&display=swap"
+      rel="stylesheet"
+    />
     <title>Stil</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
@@ -15,23 +25,31 @@
     <video id="backVideo" autoplay muted loop>
       <!-- exclude the control property to hide them-->
       <!--for some reason only stupid % works not vp-->
-      <source src="beach with fade.mp4" type="video/mp4" />
+      <source src="sunset beach.mp4" type="video/mp4" />
       <!--could nt  find a way yo seamless loop-->
 
       Your browser does not support the video tag.
     </video>
-    <audio class="audio" loop >
-      
-      <source src="sea waves sound effects (128 kbps).mp3" type="audio/mpeg" />
+    <audio class="audio" loop>
+      <source src="waves sound.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
+    </audio>
+    <audio class="timerEndBell">
+      <source src="bell.mp3" type="audio/mpeg" />
     </audio>
 
     <!--all ui elements are here-->
     <div class="mainInterface">
       <div class="timeSelector">
-        <button type="button" class="time5">5</button>
-        <button type="button" class="time10">10</button>
-        <button type="button" class="time20">20</button>
+        <button type="button" class="time5" title="meditate for 5 minutes">
+          5
+        </button>
+        <button type="button" class="time10" title="meditate for 10 minutes">
+          10
+        </button>
+        <button type="button" class="time20" title="meditate for 20 minutes">
+          20
+        </button>
       </div>
       <div class="timeDisplay">
         <div class="timer">60</div>
@@ -39,11 +57,22 @@
       </div>
 
       <div class="modifications">
-        <div class="arrowClickArea">
+        <div class="arrowClickArea" title="change the video and sounds">
+          <div class="material-symbols-outlined iconArw" id="arrowChangeBack">
+            arrow_forward_ios
+          </div>
           <button type="button" class="changeArrow"></button>
         </div>
-        <button type="button" class="muteAudio"></button>
-        <!--always remember the damn . when creataing classes with emmet -->
+
+        <button
+          onclick="location.href='#tt'"
+          type="button"
+          class="muteAudio"
+          title="mute/unmute"
+        >
+          <div class="material-symbols-outlined iconVol" id="tt">volume_up</div>
+        </button>
+        <!--always remember the damn . when creating classes with emmet -->
       </div>
     </div>
     <script type="text/javascript" src="medApp.js"></script>
