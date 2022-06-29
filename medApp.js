@@ -1,12 +1,17 @@
+
+//if global var needed define out function no need window
 function lg(input) {
   console.log(input);
 }
-var isTimerOn =false;
+
 $(document).ready(function () {
   var isTimerDone = false;
+  var isTimerOn = false;
+  var isMute = false; //prevents audio playing if muted when vid changed.
+  var sound = document.getElementsByClassName("audio")[0];
   // use a verb for funcs
-  //var timerLength = 0; // in mins
-  function getTimerLength() {
+  
+  function getTimerLength() { // get the len of timer from inner html of button
     $(".time5,.time10,.time20").on("click", (event) => {
       timerLength = event.target.innerHTML - 1;
       hateThisShit = timerLength;
@@ -17,7 +22,7 @@ $(document).ready(function () {
     });
   }
 
-  function runTimer() {
+  function runTimer() {// do the count down
     getTimerLength();
     setInterval(() => {
       if (window.nSecs >= 0) {
@@ -28,15 +33,21 @@ $(document).ready(function () {
           (window.secs = 60), window.timerLength--;
           window.nSecs--;
         }
-      } else {
+      } 
+     
+      else {
         $(".timer").html(00 + " : " + 00);
         isTimerDone = true;
         isTimerOn=false;
+       
+        document.getElementsByClassName("audio")[0].pause();
       }
+      if(window.timerLength===0&&window.secs===5)document.getElementsByClassName("timerEndBell")[0].play();
     }, 1000);
   }
+ 
 
-  function timerBarMove() {
+  function timerBarMove() {// show the timer bar progress
     var style = getComputedStyle(document.body);
     var timerBarWidth = style.getPropertyValue("--timerBarWidth");
 
@@ -73,34 +84,34 @@ $(document).ready(function () {
       if (vidNum === 1) {
         $("#backVideo").attr(
           "src",
-          "Forest Wonders in 4K - Short Preview of the Nature Relax Video.mp4"
+          "forest vid.mp4"
         );
-        $('.audio').attr("src","frst audio.mp3")
+        $('.audio').attr("src","bird sounds.mp3")
         if(isTimerOn===true & isMute===false){
-           document.getElementsByClassName("audio")[0].play();
+           sound.play();
         }
         vidNum = 2;
       } else if (vidNum === 2) {
-        $("#backVideo").attr("src", "beach with fade.mp4");
+        $("#backVideo").attr("src", "sunset beach.mp4");
         
-         $(".audio").attr("src", "sea waves sound effects (128 kbps).mp3");
+         $(".audio").attr("src", "waves sound.mp3");
          vidNum = 1;
          if ((isTimerOn === true) & (isMute === false)) {
-           document.getElementsByClassName("audio")[0].play();
+           sound.play();
          }
       }
 
-      // $("#backVideo")[0].load();
     });
   }
-  var isMute = false; //prevents audio playing if muted when vid changed.
-  function Audio() {
+ 
+  function Audio() { // playing and muting 
    
-    
-    var sound = document.getElementsByClassName("audio")[0];
+   
+    if(isTimerDone===true) sound.pause();
 
     $(".time5,.time10,.time20").on("click", (event) => {
-     if (isMute===false) document.getElementsByClassName("audio")[0].play();
+     
+     if (isMute===false & isTimerOn===true) sound.play();
            
       console.log(sound.src);
     });
@@ -126,4 +137,5 @@ $(document).ready(function () {
   runTimer();
   changeBkg();
   Audio();
+ 
 });

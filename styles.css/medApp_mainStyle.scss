@@ -1,7 +1,9 @@
 //make sure that the scss compilation occurs properly 
+//use font size to change icon size
 :root{
   --timerBarWidth:1%;
 }
+$fontClr :honeydew;
 * {
   margin: 0;
   padding: 0;
@@ -29,8 +31,9 @@ $mainMargin: 15px;
   gap: $gap;
 }
 #backVideo{
-   top:0; ; z-index: 1;  position: fixed; background-color: rgb(18, 53, 53);
-  width: 100vw; left: 0;
+   top:0; ; z-index: 1;  position: fixed; background-color: rgb(12, 12, 13);
+  width: 100vw; left: 0; 
+  filter: brightness(90%);
 }
 
 .mainInterface { // this holds all UI 
@@ -43,7 +46,9 @@ $mainMargin: 15px;
     10px,
     0
   );
-  background-color: rgb(87, 30, 30);
+  background-color: rgba(1, 2, 12, 0.2);
+  box-shadow: 1px 3px 2px rgba(0, 0, 0, .2); 
+
   margin: auto;
   
   // simply use margin auto to center horizontally , if its in a flex box use those things
@@ -57,7 +62,7 @@ $mainMargin: 15px;
 }
 .timeSelector {//select time background parent
   @include flex(column, center, space-evenly, none);
-  @include sizing(40vh, 10vw, 5px, none);align-self: center;
+  @include sizing(50vh, 10vw, 5px, none);align-self: center;
 }
 .timer{
   @include sizing(40px,70px,0,30px);
@@ -82,9 +87,11 @@ $mainMargin: 15px;
 }
 
 .time5 {
-  height: 7vh;
+  height: 6vh; 
   width: 3vw;
-  background-color: aqua;
+  color: $fontClr;
+  background-color: rgba(1, 6, 18, 0.159);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .5) ;
   border-radius: 50%;
   margin: 10px;
   cursor: pointer;
@@ -97,40 +104,18 @@ $mainMargin: 15px;
   @extend .time5;
 }
 .muteAudio {
-  @extend .time5;
-  height: 2vw;
-  width: 2vw;
+  @extend .time5; height: 4vh; width: 2vw;
+  
 }
 .arrowClickArea{
   @extend .muteAudio; 
-  background-color: rgb(24, 123, 145);
+  
 }
-.changeArrow {
-  display: none;
-  top: 25px;
-  width: 63px;
-  height: 10px;
-  background-color: rgb(143, 179, 219);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .2); border-radius:40%;
-  animation: arrow 700ms linear infinite; transform: scale(0.4);
+#tt,#arrowChangeBack{
+  font-size: 1rem; margin:auto; text-align: center; position: relative;
+  transform: translateX(5px) translateY(4px);
+}
+#tt{
+  transform: translateX(0px) translateY(3px);
 }
 
-.changeArrow::after, .changeArrow::before {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 10px;
-  right: -8px; border-radius: 30%;
-  background-color: rgb(139, 149, 214);
-}
-
-.changeArrow::after {
-  top: -12px;
-  transform: rotate(45deg);   
-}
-
-.changeArrow::before {
-  top: 12px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, .6);
-  transform: rotate(-45deg);
-}
