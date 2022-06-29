@@ -1,6 +1,7 @@
 function lg(input) {
   console.log(input);
 }
+var isTimerOn =false;
 $(document).ready(function () {
   var isTimerDone = false;
   // use a verb for funcs
@@ -12,6 +13,7 @@ $(document).ready(function () {
       nSecs = timerLength;
       secs = 60;
       kk = 0;
+      isTimerOn=true;
     });
   }
 
@@ -29,6 +31,7 @@ $(document).ready(function () {
       } else {
         $(".timer").html(00 + " : " + 00);
         isTimerDone = true;
+        isTimerOn=false;
       }
     }, 1000);
   }
@@ -63,7 +66,8 @@ $(document).ready(function () {
       }
     }, 1000);
   }
-  function changeBkg() {
+ 
+  function changeBkg() {//change the video and audio
     var vidNum = 1;
     $(".arrowClickArea").on("click", () => {
       if (vidNum === 1) {
@@ -71,35 +75,53 @@ $(document).ready(function () {
           "src",
           "Forest Wonders in 4K - Short Preview of the Nature Relax Video.mp4"
         );
+        $('.audio').attr("src","frst audio.mp3")
+        if(isTimerOn===true & isMute===false){
+           document.getElementsByClassName("audio")[0].play();
+        }
         vidNum = 2;
       } else if (vidNum === 2) {
         $("#backVideo").attr("src", "beach with fade.mp4");
-        vidNum = 1;
+        
+         $(".audio").attr("src", "sea waves sound effects (128 kbps).mp3");
+         vidNum = 1;
+         if ((isTimerOn === true) & (isMute === false)) {
+           document.getElementsByClassName("audio")[0].play();
+         }
       }
 
       // $("#backVideo")[0].load();
     });
   }
+  var isMute = false; //prevents audio playing if muted when vid changed.
   function Audio() {
-    var isMute = false;
+   
+    
     var sound = document.getElementsByClassName("audio")[0];
 
     $(".time5,.time10,.time20").on("click", (event) => {
-      document.getElementsByClassName("audio")[0].play();
+     if (isMute===false) document.getElementsByClassName("audio")[0].play();
+           
+      console.log(sound.src);
     });
 
     $(".muteAudio").on("click", (event) => {
-      if (isMute === false) {
-        sound.pause();
-        isMute = true;
-      } else if (isMute === true) {
-        sound.play();
-        isMute = false;
-      }
+       if (isTimerOn === true) {
+          if (isMute === false) {
+            sound.pause();
+            isMute = true; 
+            $(".iconVol").html("volume_mute");
+          } else if (isMute === true) {
+            sound.play();
+            isMute = false;
+            $(".iconVol").html("volume_up");
+          }
+       }
+      
     });
   }
 
-  // run the goddam functions first
+  // run the goddamn functions first
   timerBarMove();
   runTimer();
   changeBkg();
