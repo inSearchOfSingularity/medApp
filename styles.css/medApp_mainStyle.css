@@ -9,6 +9,7 @@
   outline: 0;
   vertical-align: baseline;
   background: transparent;
+  font-family: "Roboto Slab";
 }
 
 #backVideo {
@@ -34,8 +35,10 @@
   width: clamp(300px, 70vw, 1000px);
   padding: 10px;
   margin: 0;
-  background-color: rgba(1, 2, 12, 0.2);
-  box-shadow: 1px 3px 2px rgba(0, 0, 0, 0.2);
+  background-color: rgba(1, 2, 12, 0.179);
+  box-shadow: 1px 3px 10px rgba(1, 2, 12, 0.4) inset;
+  box-shadow: 1px 3px 15px rgba(1, 2, 12, 0.7);
+  border-radius: 20px;
   margin: auto;
 }
 
@@ -75,31 +78,35 @@
 
 .timer {
   height: 40px;
-  width: 70px;
+  width: 120px;
   padding: 0;
   margin: 30px;
-  background-color: rgb(196, 147, 33);
-  transform: translateX(-30%) translateY(-80%);
+  font-size: 3rem;
+  color: honeydew;
+  transform: translateX(-23%) translateY(-80%);
   border-radius: 30%;
 }
 
 .timerIndicator, .t .timerIndicator {
-  height: 5%;
+  height: 10%;
   width: 75%;
   padding: 0;
   margin: auto;
   background-color: rgb(11, 7, 4);
   transition: 500ms;
   position: relative;
+  box-shadow: 3px 3px 10px rgba(1, 2, 12, 0.8) inset;
 }
 .timerIndicator::after, .t .timerIndicator::after {
   content: "";
-  height: 3px;
+  height: 7px;
   width: var(--timerBarWidth);
   padding: 0;
   margin: 0;
   position: absolute;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.727);
+  border-radius: 3px;
+  box-shadow: 3px 3px 10px rgba(1, 2, 12, 0.2);
 }
 
 .t .timerIndicator {
@@ -110,7 +117,7 @@
   height: 6vh;
   width: 3vw;
   color: honeydew;
-  background-color: rgba(1, 6, 18, 0.159);
+  background-color: rgba(1, 6, 17, 0.422);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   margin: 10px;
@@ -128,9 +135,9 @@
   margin: auto;
   text-align: center;
   position: relative;
-  transform: translateX(5px) translateY(4px);
+  transform: translateX(5.3px) translateY(3px);
 }
 
 #tt {
-  transform: translateX(0px) translateY(3px);
+  transform: translateX(0px) translateY(2.5px);
 }/*# sourceMappingURL=medApp_mainStyle.css.map */
