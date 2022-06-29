@@ -1,4 +1,4 @@
 # medApp
 ---
-*only the functional elements do cosmatics , and demo video/audio is used*
+*only the functional elements no cosmatics , and demo video/audio is used*
 
